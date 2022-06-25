@@ -48,6 +48,7 @@ class Paste {
         return new Promise((res) => __awaiter(this, void 0, void 0, function* () {
             const body = yield (0, RentryGateway_1.getPaste)(link);
             const paste = new Paste(link, editCode, body, client);
+            res(paste);
         }));
     }
 }

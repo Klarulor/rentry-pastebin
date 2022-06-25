@@ -43,6 +43,7 @@ export class Paste{
         return new Promise(async res => {
            const body = await getPaste(link);
            const paste = new Paste(link, editCode, body, client);
+           res(paste);
         });
     }
 }
