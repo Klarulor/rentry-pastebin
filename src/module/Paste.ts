@@ -20,6 +20,12 @@ export class Paste{
     public setContent(newContent: string): void{
         this.client.editPasteContent(this.link, this.editCode, newContent);
     }
+    public setContentAsync(newContent: string): Promise<void>{
+        return new Promise(async res => {
+            await this.client.editPasteContentAsync(this.link, this.editCode, newContent);
+            res();
+        })
+    }
     public editEditCode(id: string, password: string, newEditCode: string): void{
         this.client.editPasteEditCode(this.link, this.editCode, newEditCode);
     }

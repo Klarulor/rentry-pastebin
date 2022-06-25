@@ -40,6 +40,9 @@ export function generateToken(jar: CookieJar): Promise<string>{
 export function editPasteContent(jar: CookieJar, token: string, id: string, password: string, newContent: string): void{
     editField(jar, token, id, password, newContent, null, null);
 }
+export function editPasteContentAsync(jar: CookieJar, token: string, id: string, password: string, newContent: string): Promise<void>{
+    return editFieldAsync(jar, token, id, password, newContent, null, null);
+}
 export function editPasteEditCode(jar: CookieJar, token: string, id: string, password: string, newEditCode: string): void{
     editField(jar, token, id, password, null, newEditCode, null);
 }
@@ -64,6 +67,20 @@ function editField(jar: CookieJar, token: string, id: string, password: string, 
     const body = `csrfmiddlewaretoken=${token}&text=${encodeURIComponent(newContent || "")}&edit_code=${encodeURIComponent(password || "")}&new_edit_code=${encodeURIComponent(newEditCode || "")}&new_url=${encodeURIComponent(newUrl || "")}`;
     request.post({url: `${url}/${id}/edit`, headers, body, jar}, () => {});
 }
+
+function editFieldAsync(jar: CookieJar, token: string, id: string, password: string, newContent: string, newEditCode: string, newUrl: string): Promise<void>{
+    return new Promise(res => {
+        const headers = {
+            "content-type": "application/x-www-form-urlencoded",
+            "cookie": `csrftoken=${token}`,
+            "Referer": "https://rentry.co/",
+        };
+
+        const body = `csrfmiddlewaretoken=${token}&text=${encodeURIComponent(newContent || "")}&edit_code=${encodeURIComponent(password || "")}&new_edit_code=${encodeURIComponent(newEditCode || "")}&new_url=${encodeURIComponent(newUrl || "")}`;
+        request.post({url: `${url}/${id}/edit`, headers, body, jar}, res);
+    });
+}
+
 
 export function deletePaste(jar: CookieJar, token: string, id: string, password: string): void{
     const headers = {

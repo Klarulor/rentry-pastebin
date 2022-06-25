@@ -2,7 +2,7 @@ import {CookieJar} from "request";
 import {
     createPaste,
     deletePaste,
-    editPasteContent,
+    editPasteContent, editPasteContentAsync,
     editPasteEditCode,
     editPasteUrl,
     generateToken, getPaste
@@ -42,6 +42,9 @@ export class RentryClient{
     }
     public editPasteContent(id: string, password: string, newContent: string): void{
         editPasteContent(this.jar, this.token, id, password, newContent);
+    }
+    public editPasteContentAsync(id: string, password: string, newContent: string): Promise<void>{
+        return editPasteContentAsync(this.jar, this.token, id, password, newContent);
     }
     public editPasteEditCode(id: string, password: string, newEditCode: string): void{
         editPasteEditCode(this.jar, this.token, id, password, newEditCode);
