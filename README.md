@@ -1,11 +1,11 @@
 # Rentry Pastebin
 ``Client for RENTRY-Pastebin API``
 
-##Installation
+## Installation
 ```
 $ npm install rentry-pastebin
 ```
-##Examples
+## Examples
 ```
 $ git clone git://github.com/klarulor/rentry-pastebin/ --depth 1
 $ cd exmaple
@@ -30,7 +30,7 @@ const client = new RentryClient();
 })()
 ```
 
-##Documentation
+## Documentation
 
 Import:
 ```typescript
