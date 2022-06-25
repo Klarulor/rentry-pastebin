@@ -1,5 +1,5 @@
 # Rentry Pastebin
-``Client for RENTRY-Pastebin API``
+``Client for https://rentry.co/ API``
 
 ## Installation
 ```
