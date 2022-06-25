@@ -18,5 +18,5 @@ __exportStar(require("./module/RentryClient"), exports);
 __exportStar(require("./module/RentryGateway"), exports);
 __exportStar(require("./module/Paste"), exports);
 __exportStar(require("./module/features/IPasteCreatingOptions"), exports);
-__exportStar(require("./module/features/ILinkCodePair"), exports);
+__exportStar(require("./module/features/IPasteStruct"), exports);
 //# sourceMappingURL=index.js.map

@@ -9,6 +9,6 @@
   "author": "klarulor",
   "license": "MIT",
   "dependencies": {
-    "rentry-pastebin": "^1.1.1"
+    "rentry-pastebin": "^1.1.3"
   }
 }
