@@ -50,7 +50,7 @@ exports.editPasteUrl = editPasteUrl;
 function getPaste(id) {
     return new Promise(res => {
         console.log(`${url}/${id}`);
-        request.get({ url: `${url}/${id}` }, function (err, httpResponse, body) {
+        request.get({ url: `${url}/${id}/raw` }, function (err, httpResponse, body) {
             //console.log(body);
             res(body.split('<p>')[1].split(`</p>`)[body.split('<p>')[1].split(`</p>`).length - 2]);
         });
