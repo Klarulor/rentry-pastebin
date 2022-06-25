@@ -53,7 +53,7 @@ export function editPasteUrl(jar: CookieJar, token: string, id: string, password
 export function getPaste(id: string): Promise<string>{
     return new Promise(res => {
         console.log(`${url}/${id}`);
-        request.get({url: `${url}/${id}`}, function(err: any, httpResponse: any, body: string){
+        request.get({url: `${url}/${id}/raw`}, function(err: any, httpResponse: any, body: string){
             //console.log(body);
             res(body.split('<p>')[1].split(`</p>`)[body.split('<p>')[1].split(`</p>`).length - 2])
         })
