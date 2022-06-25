@@ -24,6 +24,12 @@ class Paste {
     setContent(newContent) {
         this.client.editPasteContent(this.link, this.editCode, newContent);
     }
+    setContentAsync(newContent) {
+        return new Promise((res) => __awaiter(this, void 0, void 0, function* () {
+            yield this.client.editPasteContentAsync(this.link, this.editCode, newContent);
+            res();
+        }));
+    }
     editEditCode(id, password, newEditCode) {
         this.client.editPasteEditCode(this.link, this.editCode, newEditCode);
     }

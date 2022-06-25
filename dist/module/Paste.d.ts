@@ -9,6 +9,7 @@ export declare class Paste {
     getEditCode: () => string;
     getContent: () => string;
     setContent(newContent: string): void;
+    setContentAsync(newContent: string): Promise<void>;
     editEditCode(id: string, password: string, newEditCode: string): void;
     editUrl(id: string, password: string, newUrl: string): void;
     delete(id: string, password: string): void;

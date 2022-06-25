@@ -10,6 +10,7 @@ export declare class RentryClient {
     createPaste(options: IPasteCreatingOptions): Promise<IPasteStruct>;
     getPaste(id: string): Promise<string>;
     editPasteContent(id: string, password: string, newContent: string): void;
+    editPasteContentAsync(id: string, password: string, newContent: string): Promise<void>;
     editPasteEditCode(id: string, password: string, newEditCode: string): void;
     editPasteUrl(id: string, password: string, newUrl: string): void;
     deletePaste(id: string, password: string): void;

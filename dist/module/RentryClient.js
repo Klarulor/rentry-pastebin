@@ -42,6 +42,9 @@ class RentryClient {
     editPasteContent(id, password, newContent) {
         (0, RentryGateway_1.editPasteContent)(this.jar, this.token, id, password, newContent);
     }
+    editPasteContentAsync(id, password, newContent) {
+        return (0, RentryGateway_1.editPasteContentAsync)(this.jar, this.token, id, password, newContent);
+    }
     editPasteEditCode(id, password, newEditCode) {
         (0, RentryGateway_1.editPasteEditCode)(this.jar, this.token, id, password, newEditCode);
     }

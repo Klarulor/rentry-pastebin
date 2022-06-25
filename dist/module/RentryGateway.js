@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deletePaste = exports.getPaste = exports.editPasteUrl = exports.editPasteEditCode = exports.editPasteContent = exports.createPaste = exports.generateToken = void 0;
+exports.deletePaste = exports.getPaste = exports.editPasteUrl = exports.editPasteEditCode = exports.editPasteContentAsync = exports.editPasteContent = exports.createPaste = exports.generateToken = void 0;
 const request = require('request');
 const url = 'https://rentry.co/';
 function generateToken(jar) {
@@ -35,6 +35,10 @@ function editPasteContent(jar, token, id, password, newContent) {
     editField(jar, token, id, password, newContent, null, null);
 }
 exports.editPasteContent = editPasteContent;
+function editPasteContentAsync(jar, token, id, password, newContent) {
+    return editFieldAsync(jar, token, id, password, newContent, null, null);
+}
+exports.editPasteContentAsync = editPasteContentAsync;
 function editPasteEditCode(jar, token, id, password, newEditCode) {
     editField(jar, token, id, password, null, newEditCode, null);
 }
@@ -59,6 +63,17 @@ function editField(jar, token, id, password, newContent, newEditCode, newUrl) {
     };
     const body = `csrfmiddlewaretoken=${token}&text=${encodeURIComponent(newContent || "")}&edit_code=${encodeURIComponent(password || "")}&new_edit_code=${encodeURIComponent(newEditCode || "")}&new_url=${encodeURIComponent(newUrl || "")}`;
     request.post({ url: `${url}/${id}/edit`, headers, body, jar }, () => { });
+}
+function editFieldAsync(jar, token, id, password, newContent, newEditCode, newUrl) {
+    return new Promise(res => {
+        const headers = {
+            "content-type": "application/x-www-form-urlencoded",
+            "cookie": `csrftoken=${token}`,
+            "Referer": "https://rentry.co/",
+        };
+        const body = `csrfmiddlewaretoken=${token}&text=${encodeURIComponent(newContent || "")}&edit_code=${encodeURIComponent(password || "")}&new_edit_code=${encodeURIComponent(newEditCode || "")}&new_url=${encodeURIComponent(newUrl || "")}`;
+        request.post({ url: `${url}/${id}/edit`, headers, body, jar }, res);
+    });
 }
 function deletePaste(jar, token, id, password) {
     const headers = {
