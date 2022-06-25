@@ -1,4 +1,4 @@
-import {RentryClient, Paste, ILinkCodePair} from "rentry-pastebin";
+import {RentryClient, Paste} from "rentry-pastebin";
 
 const client = new RentryClient();
 (async () => {
