@@ -81,7 +81,7 @@ function deletePaste(jar, token, id, password) {
         "cookie": `csrftoken=${token}`,
         "Referer": "https://rentry.co/",
     };
-    const body = `csrfmiddlewaretoken=${token}&text=&edit_code=&new_edit_code=&new_url=&delete=delete`;
+    const body = `csrfmiddlewaretoken=${token}&text=&edit_code=${encodeURIComponent(password || "")}&new_edit_code=&new_url=&delete=delete`;
     request.post({ url: `${url}/${id}/edit`, headers, body, jar }, () => { });
 }
 exports.deletePaste = deletePaste;
